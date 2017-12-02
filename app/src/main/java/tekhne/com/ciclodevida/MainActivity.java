@@ -25,7 +25,10 @@ public class MainActivity extends AppCompatActivity {
         siguiente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, Main2Activity.class));
+
+                Intent i =  new Intent(MainActivity.this, Main2Activity.class);
+                i.putExtra("name", "carlos");
+                startActivity(i);
             }
         });
 
@@ -36,7 +39,15 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this,"ON CREATE", Toast.LENGTH_LONG).show();
 
         SystemClock.sleep(7000);
+          if(savedInstanceState!=null){
+                savedInstanceState = new Bundle();
+              savedInstanceState.putString("nombre", "pepito");
+              Log.d("BUNDLE","estamos escribiendo");
+          }  else{
+              Log.d("BUNDLE","null");
+          }
 
+      //  super.onSaveInstanceState(outState, outPersis
     }
 
     @Override
@@ -76,20 +87,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     @Override
-    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-        super.onSaveInstanceState(outState, outPersistentState);
-
-        int colorFondo = ContextCompat.getColor(this, R.color.colorBlue);
-        fondo.setBackgroundColor(colorFondo);
-        Toast.makeText(this,"ON SAVE INSTANCE", Toast.LENGTH_LONG).show();
-        SystemClock.sleep(1000);
-        outState.putString("nombre", "pepito");
-        Log.d("BUNDLE","estamos escribiendo");
-
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Log.d("SAVE", "guardamos datos");
+        outState.putString("name","pepito");
     }
-
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {

@@ -5,13 +5,18 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class Main2Activity extends AppCompatActivity {
-    private ListView listaUsuarios;
+import modelo.Producto;
+
+public class Main2Activity extends AppCompatActivity implements View.OnClickListener {
+    public ListView listaProductos;
+    private Button btnAgregar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,22 +26,30 @@ public class Main2Activity extends AppCompatActivity {
             Log.d("da" +
                     "tos", datos.getString("name"));
         }
-        listaUsuarios = (ListView)findViewById(R.id.lista_usuarios);
-        ArrayList<String> arrayUsuarios = new ArrayList<>();
-        arrayUsuarios.add("Pepito");
-        arrayUsuarios.add("Carlitos");
-
-        ItemAdapter adapter = new ItemAdapter(this,android.R.layout.simple_list_item_1,arrayUsuarios);
-
-        listaUsuarios.setAdapter(adapter);
+        listaProductos = (ListView)findViewById(R.id.lista_usuarios);
+        btnAgregar = (Button)findViewById(R.id.btn_agregar);
 
 
-        listaUsuarios.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+     //   ArrayList<String> arrayUsuarios = new ArrayList<>();
+     //   arrayUsuarios.add("Pepito");
+      //  arrayUsuarios.add("Carlitos");
+
+      //  ItemAdapter adapter = new ItemAdapter(this,android.R.layout.simple_list_item_1,arrayUsuarios);
+
+         final List<Producto> listProductos = new ArrayList<>();
+         listProductos.add( new Producto(1,"Huari", "CBN","Cerveza",20.0,true,5));
+         ProductoItemAdapter adapter = new ProductoItemAdapter(this,listProductos);
+        this.listaProductos.setAdapter(adapter);
+
+        this.listaProductos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(Main2Activity.this, "Item" + position, Toast.LENGTH_SHORT ).show();
             }
         });
+
+        btnAgregar.setOnClickListener(this);
 
     }
 
@@ -47,4 +60,14 @@ public class Main2Activity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onClick(View v) {
+      switch (v.getId()){
+          case R.id.btn_agregar:
+              //listProductos.add( new Producto(1,"Huari", "CBN","Cerveza",20.0,true,5));
+              //adapter.notifyDataSetChanged();
+              Log.d("click","botton");
+              break;
+      }
+    }
 }

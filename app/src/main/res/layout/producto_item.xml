@@ -56,27 +56,27 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/txt_codigo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.13" />
 
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/txt_producto"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.13"
                     android:text="" />
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/txt_marca"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.13"
                     android:text="" />
 
                 <TextView
-                    android:id="@+id/textView3"
+                    android:id="@+id/txt_categoria"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.13"
@@ -106,21 +106,21 @@
 
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/btn_agregar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Button" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/btn_stock"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Button" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/btn_precio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
